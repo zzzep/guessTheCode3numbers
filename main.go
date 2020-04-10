@@ -1,24 +1,46 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strings"
+	"time"
 )
 
 type hint struct {
 	Number     string
 	RightPlace int8
 	WrongPlace int8
+	Message    string
+}
+
+func getHints() [5]hint {
+	hints := [5]hint{
+		{"", 1, 0, "Um número de 3 digitos com: um número correto e no lugar certo"},
+		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
+		{"", 0, 2, "Um número de 3 digitos com: dois números corretos mas no lugar errado"},
+		{"", 0, 0, "Um número de 3 digitos com: nenhum número correto"},
+		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
+	}
+
+	fmt.Println("Escolha um número, mantenha em sua mente")
+	time.Sleep(3)
+	fmt.Println("Agora é hora das dicas\nDigite números com apenas o que indica na tela")
+
+	for i, h := range hints {
+		fmt.Println(h.Message)
+		buf := bufio.NewReader(os.Stdin)
+		sentence, _ := buf.ReadBytes('\n')
+
+		hints[i].Number = string(sentence)[0:3]
+	}
+
+	return hints
 }
 
 func main() {
-	numbers := [5]hint{
-		{"289", 1, 0},
-		{"215", 0, 1},
-		{"942", 0, 2},
-		{"738", 0, 0},
-		{"784", 0, 1},
-	}
+	hints := getHints()
 
 	corrects := 0
 
@@ -26,19 +48,19 @@ func main() {
 		nc := padNumberWith3Zeros(n)
 		corrects = 0
 
-		for hintsCount := 0; hintsCount < len(numbers); hintsCount++ {
-			if RightPlace(numbers[hintsCount], nc) == false {
+		for hintsCount := 0; hintsCount < len(hints); hintsCount++ {
+			if RightPlace(hints[hintsCount], nc) == false {
 				break
 			}
 
-			if WrongPlace(numbers[hintsCount], nc) == false {
+			if WrongPlace(hints[hintsCount], nc) == false {
 				break
 			}
 
 			corrects++
 		}
 
-		if corrects == len(numbers) {
+		if corrects == len(hints) {
 			fmt.Println("Número correto: ", nc)
 		}
 	}
