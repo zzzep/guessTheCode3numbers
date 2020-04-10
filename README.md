@@ -22,4 +22,4 @@ go run main.go
 ### Example
 
 ![example](challenge.jpeg)
-![example](challenge.jpeg)
+![example](challenge2.jpeg)
