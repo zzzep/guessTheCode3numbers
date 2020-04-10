@@ -1,3 +1,6 @@
+//Copyright ₢
+//Author Giuseppe Fechio
+//Email giuseppe.fechio@gmail.com
 package main
 
 import (
@@ -13,30 +16,6 @@ type hint struct {
 	RightPlace int8
 	WrongPlace int8
 	Message    string
-}
-
-func getHints() [5]hint {
-	hints := [5]hint{
-		{"", 1, 0, "Um número de 3 digitos com: um número correto e no lugar certo"},
-		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
-		{"", 0, 2, "Um número de 3 digitos com: dois números corretos mas no lugar errado"},
-		{"", 0, 0, "Um número de 3 digitos com: nenhum número correto"},
-		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
-	}
-
-	fmt.Println("Escolha um número, mantenha em sua mente")
-	time.Sleep(3)
-	fmt.Println("Agora é hora das dicas\nDigite números com apenas o que indica na tela")
-
-	for i, h := range hints {
-		fmt.Println(h.Message)
-		buf := bufio.NewReader(os.Stdin)
-		sentence, _ := buf.ReadBytes('\n')
-
-		hints[i].Number = string(sentence)[0:3]
-	}
-
-	return hints
 }
 
 func main() {
@@ -64,6 +43,30 @@ func main() {
 			fmt.Println("Número correto: ", nc)
 		}
 	}
+}
+
+func getHints() [5]hint {
+	hints := [5]hint{
+		{"", 1, 0, "Um número de 3 digitos com: um número correto e no lugar certo"},
+		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
+		{"", 0, 2, "Um número de 3 digitos com: dois números corretos mas no lugar errado"},
+		{"", 0, 0, "Um número de 3 digitos com: nenhum número correto"},
+		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
+	}
+
+	fmt.Println("Escolha um número, mantenha em sua mente")
+	time.Sleep(3)
+	fmt.Println("Agora é hora das dicas\nDigite números com apenas o que indica na tela")
+
+	for i, h := range hints {
+		fmt.Println(h.Message)
+		buf := bufio.NewReader(os.Stdin)
+		sentence, _ := buf.ReadBytes('\n')
+
+		hints[i].Number = string(sentence)[0:3]
+	}
+
+	return hints
 }
 
 func WrongPlace(n hint, h string) bool {
