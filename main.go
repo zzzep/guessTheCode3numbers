@@ -22,29 +22,25 @@ func main() {
 
 	corrects := 0
 
-	var n int16
-	for n = 0; n <= 999; n++ {
+	for n := 0; n <= 999; n++ {
 		nc := padNumberWith3Zeros(n)
 		corrects = 0
 
 		for hintsCount := 0; hintsCount < len(numbers); hintsCount++ {
-
-			rp := RightPlace(numbers[hintsCount], nc)
-			if rp == false {
+			if RightPlace(numbers[hintsCount], nc) == false {
 				break
 			}
 
-			wp := WrongPlace(numbers[hintsCount], nc)
-			if wp == false {
+			if WrongPlace(numbers[hintsCount], nc) == false {
 				break
 			}
+
 			corrects++
 		}
 
 		if corrects == len(numbers) {
 			fmt.Println("Número correto: ", nc)
 		}
-
 	}
 }
 
@@ -72,6 +68,6 @@ func RightPlace(n hint, h string) bool {
 	return c == n.RightPlace
 }
 
-func padNumberWith3Zeros(value int16) string {
+func padNumberWith3Zeros(value int) string {
 	return fmt.Sprintf("%03d", value)
 }
