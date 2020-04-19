@@ -1,4 +1,4 @@
-package guess
+package guess3
 
 import (
 	"fmt"

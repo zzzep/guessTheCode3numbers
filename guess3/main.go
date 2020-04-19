@@ -1,7 +1,7 @@
 //Copyright ₢
 //Author Giuseppe Fechio
 //Email giuseppe.fechio@gmail.com
-package guess
+package guess3
 
 import (
 	"bufio"
@@ -18,7 +18,7 @@ type hint struct {
 	Message    string
 }
 
-func guess() {
+func try() {
 	hints := getHints()
 
 	corrects := 0
