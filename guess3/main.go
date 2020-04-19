@@ -18,7 +18,7 @@ type hint struct {
 	Message    string
 }
 
-func try() {
+func Try() {
 	hints := getHints()
 
 	corrects := 0
@@ -65,7 +65,7 @@ func getHints() [5]hint {
 
 		hints[i].Number = leftPad(input, "0", 3)
 	}
-fmt.Println(hints[0].Number,len(hints[0].Number))
+	fmt.Println(hints[0].Number, len(hints[0].Number))
 	return hints
 }
 
