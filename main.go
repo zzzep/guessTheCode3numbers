@@ -1,8 +1,8 @@
 package main
 
 import (
+	"./guess3"
 	"fmt"
-	"github.com/zzzep/guessTheCode3numbers/guess3"
 )
 
 func main() {

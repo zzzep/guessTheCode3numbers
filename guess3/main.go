@@ -1,6 +1,6 @@
 //Copyright ₢
-//Author Giuseppe Fechio
-//Email giuseppe.fechio@gmail.com
+//Author: Giuseppe Fechio
+//Email: giuseppe.fechio@gmail.com
 package guess3
 
 import (
@@ -47,11 +47,11 @@ func Try() {
 
 func getHints() [5]hint {
 	hints := [5]hint{
-		{"", 1, 0, "Um número de 3 digitos com: um número correto e no lugar certo"},
-		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
-		{"", 0, 2, "Um número de 3 digitos com: dois números corretos mas no lugar errado"},
-		{"", 0, 0, "Um número de 3 digitos com: nenhum número correto"},
-		{"", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
+		{"289", 1, 0, "Um número de 3 digitos com: um número correto e no lugar certo"},
+		{"215", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
+		{"942", 0, 2, "Um número de 3 digitos com: dois números corretos mas no lugar errado"},
+		{"738", 0, 0, "Um número de 3 digitos com: nenhum número correto"},
+		{"784", 0, 1, "Um número de 3 digitos com: um número correto mas no lugar errado"},
 	}
 
 	fmt.Println("Escolha um número, mantenha em sua mente")
