@@ -61,11 +61,11 @@ func getHints() [5]hint {
 	for i, h := range hints {
 		fmt.Println(h.Message)
 		buf := bufio.NewReader(os.Stdin)
-		sentence, _ := buf.ReadBytes('\n')
+		input, _ := buf.ReadString('\n')
 
-		hints[i].Number = string(sentence)[0:3]
+		hints[i].Number = leftPad(input, "0", 3)
 	}
-
+fmt.Println(hints[0].Number,len(hints[0].Number))
 	return hints
 }
 
@@ -95,4 +95,8 @@ func RightPlace(n hint, h string) bool {
 
 func padNumberWith3Zeros(value int) string {
 	return fmt.Sprintf("%03d", value)
+}
+
+func leftPad(s string, p string, l int) string {
+	return (strings.Repeat(p, l) + s)[l:]
 }
