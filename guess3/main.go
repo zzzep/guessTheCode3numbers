@@ -18,6 +18,8 @@ type hint struct {
 	Message    string
 }
 
+const maxDigits = 3
+
 func Try() {
 	hints := getHints()
 
@@ -76,6 +78,9 @@ func WrongPlace(n hint, h string) bool {
 	var c int8 = 0
 
 	for i, x := range n.Number {
+		if i >= maxDigits {
+			break
+		}
 		if strings.Contains(h, string(x)) && h[i] != n.Number[i] {
 			c++
 		}
@@ -88,6 +93,9 @@ func RightPlace(n hint, h string) bool {
 	var c int8 = 0
 
 	for i, x := range n.Number {
+		if i >= 3 {
+			break
+		}
 		if int8(x) == int8(h[i]) {
 			c++
 		}
