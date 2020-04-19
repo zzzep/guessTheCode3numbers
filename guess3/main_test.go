@@ -18,6 +18,12 @@ func ExampleGuess() {
 	//Número correto: 459
 }
 
+func BenchmarkTry(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Try()
+	}
+}
+
 func TestRightPlaceWithNoValidNumber(t *testing.T) {
 	numberTried := "170"
 	hint := hint{Number: "289", RightPlace: 0, WrongPlace: 0, Message: "Unit Test"}
