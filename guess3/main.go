@@ -40,7 +40,7 @@ func Try() {
 		}
 
 		if corrects == len(hints) {
-			fmt.Println("Número correto: ", nc)
+			fmt.Println("Número correto:", nc)
 		}
 	}
 }
@@ -63,9 +63,12 @@ func getHints() [5]hint {
 		buf := bufio.NewReader(os.Stdin)
 		input, _ := buf.ReadString('\n')
 
-		hints[i].Number = leftPad(input, "0", 3)
+		numberTried := leftPad(input, "0", 3)
+		if numberTried != "" {
+			hints[i].Number = numberTried
+		}
 	}
-	fmt.Println(hints[0].Number, len(hints[0].Number))
+
 	return hints
 }
 

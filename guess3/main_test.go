@@ -1,11 +1,10 @@
 package guess3
 
 import (
-	"fmt"
 	"testing"
 )
 
-func ExampleGuess(){
+func ExampleGuess() {
 	Try()
 	//Output:
 	//Escolha um número, mantenha em sua mente
@@ -16,6 +15,7 @@ func ExampleGuess(){
 	//Um número de 3 digitos com: dois números corretos mas no lugar errado
 	//Um número de 3 digitos com: nenhum número correto
 	//Um número de 3 digitos com: um número correto mas no lugar errado
+	//Número correto: 459
 }
 
 func TestRightPlaceWithNoValidNumber(t *testing.T) {
@@ -133,5 +133,9 @@ func TestPadNumberWith3Zeros(t *testing.T) {
 
 func TestGetHint(t *testing.T) {
 	hints := getHints()
-	fmt.Println(hints)
+	for _, h := range hints {
+		if h.Number == "" {
+			t.Error("Number not Found")
+		}
+	}
 }
